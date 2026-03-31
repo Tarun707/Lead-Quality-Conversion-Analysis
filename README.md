@@ -47,7 +47,7 @@ So conversion is getting worse over time, even though lead quality itself hasn�
   - 70–90k: ~13.7% closed rate  
   - 10–15k: ~11.7%  
   - 7.5–10k: ~5%  
-  - >100k: ~3.6%  
+  - More than 100k: ~3.6%  
 
 - **Campaign differences are large:**
   - Debt Holding Tank: ~14.5%  
