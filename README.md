@@ -1,121 +1,101 @@
 # Lead Quality & Conversion Analysis
 
-## 📌 Problem Statement
+## Overview
 
-This project analyzes a subset of lead generation data for a single publisher and advertiser. The goal is to understand lead quality trends, identify key drivers of performance, and evaluate opportunities to improve conversion rates.
-
----
-
-## ❓ Key Questions
-
-1. Are we seeing any lead quality trends over time? Are they statistically significant?  
-2. What are the key drivers of lead quality across channels, customer segments, and campaigns?  
-3. Can we improve lead quality by 20% (from 8% to 9.6%) and unlock higher CPL?
+This project looks at ~3,000 leads from a single publisher and advertiser to understand how lead quality and conversion are behaving, and where improvements can be made.
 
 ---
 
-## 📊 Dataset Overview
+## Key Questions
 
-- ~3,000 lead records  
-- Includes information on:
-  - Traffic source (Search, Display, Call Center)
-  - Partner and campaign details
-  - Customer attributes (Debt Level, State)
-  - Quality indicators (Good leads, Closed leads)
+1. Are lead quality and conversion rates changing over time?
+2. What factors drive lead quality?
+3. Can we improve conversion from 8% to 9.6%?
 
 ---
 
-## 🔍 Approach
+## What I Did
 
-- Cleaned and preprocessed data (handled missing values, standardized fields)
-- Created key features:
-  - LeadQuality (Good vs Bad)
-  - ClosedFlag (conversion)
-  - TrafficType (Search / Display / Call Center)
-- Performed:
-  - Weekly time-series analysis
-  - Statistical testing using linear regression (p-values)
-  - Multi-dimensional segmentation (channel, partner, campaign, debt level)
+- Cleaned the dataset and handled missing values  
+- Created features like lead quality, closed flag, and traffic type  
+- Analyzed weekly trends and checked significance using regression  
+- Segmented performance by channel, partner, campaign, and debt level  
 
 ---
 
-## 📈 Key Insights
+## Key Findings
 
-### Q1: Trends Over Time
+### 1. Trends Over Time
 
-- Closed rate is declining over time and the trend is statistically significant  
-- Good rate remains relatively stable with no significant trend  
-- Lead volume is declining and statistically significant  
+- Closed rate is declining over time (p ≈ 0.008)  
+- Good rate is mostly flat (p ≈ 0.50, not significant)  
+- Lead volume is also declining (p ≈ 0.018)  
 
-👉 Overall: Conversion performance is worsening despite stable lead quality
-
----
-
-### Q2: Drivers of Lead Quality
-
-- Traffic source is a major driver:
-  - Search and Call Center outperform Display
-  - Google Display generates high volume but low quality  
-
-- Debt level is a strong factor:
-  - Mid-range segments (10–15k, 70–90k) perform best  
-  - Very low and very high debt segments underperform  
-
-- Campaign structure matters:
-  - Targeted campaigns outperform large generic campaigns  
-
-👉 Overall: Lead quality is driven by channel mix, customer profile, and campaign strategy
+So conversion is getting worse over time, even though lead quality itself hasn’t really changed.
 
 ---
 
-## 🚀 Q3: Improving Conversion (8% → 9.6%)
+### 2. Drivers of Lead Quality
 
-### Is It Achievable?
+- **Channel matters a lot:**
+  - Search: ~9.5–11% closed rate  
+  - Call Center: ~9.5%  
+  - Display: ~6–7%  
+  - Google Display specifically: ~5%  
 
-Yes — several segments already exceed the target:
-- Google Search (~11%)
-- Debt Holding Tank (~14–15%)
-- Financial Services (~12%)
-- 70–90k debt segment (~13%)
+- **Debt level is a strong driver:**
+  - 70–90k: ~13.7% closed rate  
+  - 10–15k: ~11.7%  
+  - 7.5–10k: ~5%  
+  - >100k: ~3.6%  
 
----
+- **Campaign differences are large:**
+  - Debt Holding Tank: ~14.5%  
+  - Financial Services: ~12%  
+  - DebtReductionInc (largest volume): ~6%  
 
-### Opportunities
-
-#### 1. Reduce Low-Performing Display Traffic
-- Google Display has ~5% closed rate but drives large volume  
-- Shifting traffic to higher-performing Search can improve overall conversion  
-
-#### 2. Target Better Debt Segments
-- Mid-range debt performs significantly better (~13–14%)  
-- Low debt segments (~5%) drag down performance  
-
-#### 3. Scale High-Performing Campaigns
-- Strong campaigns (Debt Holding Tank, Financial Services) outperform generic ones  
-- Reallocating budget can improve efficiency  
+Overall, performance varies a lot depending on traffic source, customer profile, and campaign.
 
 ---
 
-### Overall Assessment
+## 3. Can We Improve Conversion (8% → 9.6%)?
 
-- Only ~1.6 percentage point improvement is needed  
-- At ~3,000 leads:
-  - Current: ~240 conversions  
-  - Target: ~288 conversions  
-  - Gap: ~48 additional conversions  
+### Is it achievable?
 
-👉 This can be achieved through traffic mix optimization without major structural changes
+Yes — several segments are already above 9.6%:
+- Google Search (~11%)  
+- Debt Holding Tank (~14–15%)  
+- Financial Services (~12%)  
+- 70–90k debt (~13%)  
 
 ---
 
-## 🛠️ Tools Used
+### Where are the opportunities?
+
+- **Reduce Google Display traffic**  
+  High volume but low performance (~5% closed rate), which pulls down overall average  
+
+- **Focus on better debt segments**  
+  Mid-range debt performs much better (~13–14%) compared to low debt (~5%)  
+
+- **Shift budget to stronger campaigns**  
+  Some campaigns perform 2x better than others  
+
+---
+
+### What does improvement look like?
+
+At ~3,000 leads:
+- Current: ~8% → ~240 conversions  
+- Target: ~9.6% → ~288 conversions  
+- Gap: ~48 additional conversions  
+
+Given the gap between low- and high-performing segments (5% vs 11–14%), this looks achievable through better traffic mix rather than major changes.
+
+---
+
+## Tools Used
 
 - Python (Pandas, NumPy)
 - Matplotlib
-- Statistical Analysis (Linear Regression)
-
----
-
-## 📌 Key Takeaway
-
-Performance issues are not due to overall lead quality, but due to **traffic mix inefficiencies**. Optimizing channel allocation, targeting, and campaign strategy can realistically improve conversion rates and unlock higher revenue.
+- Linear regression (for trend analysis)
